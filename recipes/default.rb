@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 remote_file "/usr/local/bin/lein" do
-  source "http://s3.amazonaws.com/runa-share/lein"
+  source "http://github.com/technomancy/leiningen/raw/stable/bin/lein"
   mode "755"
   owner "root"
   group "root"
@@ -29,6 +29,6 @@ execute "lein_self_install" do
   user   node[:lein][:user] 
   group  node[:lein][:group]
   environment ({"HOME" => node[:lein][:home]})
-  not_if{ File.exists?("#{node[:lein][:home]}/.lein/self-installs/leiningen-1.7.1-standalone.jar") }
+  not_if{ File.exists?("#{node[:lein][:home]}/.lein/self-installs/leiningen-*-standalone.jar") }
 end
 
